@@ -3,14 +3,15 @@ import requests
 
 def get_jokes(term=""):
     jokes = []
+    headers={"Accept":"application/json"}
     if term!="":
         url = "https://icanhazdadjoke.com/search"
-        response = requests.get(url,params={"term":term},headers={"Accept":"application/json"})
+        response = requests.get(url,params={"term":term},headers=headers)
         data = response.json()['results']
         for item in data:
             jokes.append(item['joke'])
     else:
-        response = requests.get("https://icanhazdadjoke.com/", headers={"Accept": "application/json"})
+        response = requests.get("https://icanhazdadjoke.com/", headers=headers)
         jokes.append(response.json()['joke'])
     return jokes
 
