@@ -1,3 +1,4 @@
+#!/bin/env python3 
 import requests
 
 def get_jokes(term=""):
@@ -13,5 +14,7 @@ def get_jokes(term=""):
         jokes.append(response.json()['joke'])
     return jokes
 
-data = get_jokes("pickle")
-print(data)
+prompt = input("Please tell me what joke subject you are looking for...\nPressing ENTER will give you a random joke.\n")
+jokes = get_jokes(prompt)
+for joke in jokes:
+    print(joke)
