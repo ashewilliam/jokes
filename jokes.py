@@ -13,6 +13,8 @@ def get_jokes(term=""):
     else:
         response = requests.get("https://icanhazdadjoke.com/", headers=headers)
         jokes.append(response.json()['joke'])
+    if len(jokes)==0:
+        jokes = ['No jokes for the term: \"'+term + '\"']
     return jokes
 
 prompt = input("Please tell me what joke subject you are looking for...\nPressing ENTER will give you a random joke.\n")
